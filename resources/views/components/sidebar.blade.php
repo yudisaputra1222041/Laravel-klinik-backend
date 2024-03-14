@@ -1,10 +1,14 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">
-                <img src="https://play-lh.googleusercontent.com/ZQ_TyRaE6_dglopRryepNdlUTZ53lJfrJO1cDl39_5TpGFR5tCzXZJ94zioobvNt" alt="Fortuna Clinic" style="width: 60px; height: 60px;">
-            </a>
+    <a href="{{ route('home') }}" style="color: #3498db; font-size: 25px; font-weight: bold; position: relative; display: inline-block;">
+    <img src="https://play-lh.googleusercontent.com/ZQ_TyRaE6_dglopRryepNdlUTZ53lJfrJO1cDl39_5TpGFR5tCzXZJ94zioobvNt" alt="Fortuna Clinic" class="logo" style="max-width: 60px; max-height: 65px; top: 1px; right: 100px; position: relative">
+        <div class="text-wrapper">
+             <span class="brand-name" style="position: absolute; bottom: 7px; right: -25px;">Fortuna</span>
+            <span class="brand-name" style="position: absolute; top: 22px; right: 18px;">Clinic</span>
         </div>
+    </a>
+</div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">St</a>
         </div>
@@ -45,7 +49,7 @@
                 <ul class="dropdown-menu">
                     <li class=''>
                         <a class="nav-link"
-                            href="{{route('users.index')}}"><i class="fa-solid fa-bed"></i>Pasien</a>
+                            href="{{route('users.index')}}"><i class="fa-solid fa-bed"></i>Patient</a>
                     </li>
                 </ul>
                 <ul class="dropdown-menu">
