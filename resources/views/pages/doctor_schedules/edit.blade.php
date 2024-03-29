@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create Doctor')
+@section('title', 'Edit Doctors')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -22,23 +22,24 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Add New Doctor</h1>
+                <h1>Edit Doctor</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Forms</a></div>
-                    <div class="breadcrumb-item">Advanced Forms</div>
+                    <div class="breadcrumb-item">Edit Doctor</div>
                 </div>
             </div>
 
             <div class="section-body">
-                {{-- <h2 class="section-title">Add New User</h2> --}}
+                <h2 class="section-title">Form Edit Doctor</h2>
 
 
                         <div class="card">
-                            <form action="{{route('doctors.store')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('doctors.update', $doctor)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                             <div class="card-header">
-                                <h4>Please Add New Doctor This Bellow</h4>
+                                <h4>Edit Doctor</h4>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
@@ -46,12 +47,12 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <i class="fas fa-box"></i>
+                                            <i class="fas fa-user"></i>
                                         </div>
                                         </div>
                                         <input type="text" class="form-control @error('doctor_name')
                                     is-invalid
-                                    @enderror" name="doctor_name" style="max-width:400px;" placeholder="Please Enter Your Doctor Name">
+                                    @enderror" name="doctor_name" value="{{$doctor->doctor_name}}" style="max-width:400px;" placeholder="Please Enter Your Name">
                                     </div>
 
                                     @error('doctor_name')
@@ -61,16 +62,16 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>SIP</label>
+                                    <label>SIP Doctor</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <i class="fas fa-box"></i>
+                                            <i class="fas fa-notes-medical"></i>
                                         </div>
                                         </div>
                                         <input type="text" class="form-control @error('sip')
                                     is-invalid
-                                    @enderror" name="sip" style="max-width:400px;" placeholder="Please Write Your Description Doctor">
+                                    @enderror" name="sip" value="{{$doctor->sip}}" style="max-width:400px;" placeholder="Please Enter Your Name">
                                     </div>
 
                                     @error('sip')
@@ -80,16 +81,16 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Deskripsi</label>
+                                    <label>Description</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <i class="fas fa-box"></i>
+                                            <i class="fas fa-book"></i>
                                         </div>
                                         </div>
                                         <input type="text" class="form-control @error('description')
                                     is-invalid
-                                    @enderror" name="description" style="max-width:400px;" placeholder="Please Write Your Description Doctor">
+                                    @enderror" name="description" value="{{$doctor->description}}" style="max-width:400px;" placeholder="Please Enter Your Description">
                                     </div>
 
                                     @error('description')
@@ -103,12 +104,12 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <i class="fas fa-hand-holding-dollar"></i>
+                                            <i class="fas fa-phone"></i>
                                         </div>
                                         </div>
                                         <input type="number" class="form-control @error('doctor_phone')
                                     is-invalid
-                                    @enderror" name="doctor_phone" style="max-width:400px;" placeholder="Please Enter Your Price">
+                                    @enderror" name="doctor_phone" value="{{$doctor->doctor_phone}}" style="max-width:400px;" placeholder="Please Enter Your Number Phone">
                                     </div>
 
                                     @error('doctor_phone')
@@ -122,12 +123,12 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <i class="fas fa-box-archive"></i>
+                                            <i class="fas fa-envelope"></i>
                                         </div>
                                         </div>
                                         <input type="email" class="form-control @error('doctor_email')
                                     is-invalid
-                                    @enderror" name="doctor_email" style="max-width:400px;" placeholder="Please Enter Your Stock">
+                                    @enderror" name="doctor_email" value="{{$doctor->doctor_email}}" style="max-width:400px;" placeholder="Please Enter Your Stock">
                                     </div>
 
                                     @error('doctor_email')
@@ -137,55 +138,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Id IHS</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-box"></i>
-                                        </div>
-                                        </div>
-                                        <input type="text" class="form-control @error('id_ihs')
-                                    is-invalid
-                                    @enderror" name="id_ihs" style="max-width:400px;" placeholder="Please Write Your id ihs Doctor">
-                                    </div>
-
-                                    @error('id_ihs')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>NIK</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-box"></i>
-                                        </div>
-                                        </div>
-                                        <input type="text" class="form-control @error('nik')
-                                    is-invalid
-                                    @enderror" name="nik" style="max-width:400px;" placeholder="Please Write Your nik Doctor">
-                                    </div>
-
-                                    @error('nik')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="doctor_category" class="form-label">Category</label>
-                                    <select class="form-control" id="doctor_category" name="doctor_category" style="max-width:120px;">
-                                        <option value="spesialis"> Dokter Spesialis</option>
-                                        <option value="umum">Dokter Umum</option>
-                                        <option value="gigi">Dokter Gigi</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Photo</label>
+                                    <label>Image</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                         <div class="input-group-text">
@@ -194,7 +147,7 @@
                                         </div>
                                         <input type="file" class="form-control @error('photo')
                                     is-invalid
-                                    @enderror" name="photo" style="max-width:400px;" placeholder="Please Enter Your Image">
+                                    @enderror" name="photo" value="{{$doctor->photo}}" style="max-width:400px;" placeholder="Please Enter Your Image">
                                     </div>
 
                                     @error('photo')
@@ -202,17 +155,45 @@
                                         {{$message}}
                                     </div>
                                     @enderror
+
+                                    <!-- Menampilkan gambar lama jika ada -->
+        @if ($doctor->photo)
+            <div>
+                <img src="{{ asset('storage/doctor/' . $doctor->photo) }}" alt="" style="max-width:400px; max-height:300px;">
+            </div>
+        @endif
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="doctor_category" class="form-label">Category</label>
+                                    <select class="form-control" id="doctor_category" name="doctor_category" style="max-width:120px;">
+                                        <option value="spesialis" @if ($doctor->doctor_category == 'spesialis') selected @endif>Dokter Spesialis</option>
+                                        <option value="umum" @if ($doctor->doctor_category == 'umum') selected @endif>Dokter Umum</option>
+                                        <option value="gigi" @if ($doctor->doctor_category == 'gigi') selected @endif>Dokter Gigi</option>
+                                    </select>
                                 </div>
 
                                 <div class="card-footer text-left" style="display: flex; justify-content: flex-start;">
-                                    <div style="margin-right: 10px;">
-                                        <button class="btn btn-primary">Add</button>
-                                    </div>
+                                    <form id="updateForm" action="{{ route('doctors.update', $doctor) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div style="margin-right: 10px;">
+                                            <button type="submit" class="btn btn-primary" onclick="return confirmUpdate()">Update</button>
+                                        </div>
+                                    </form>
                                     <div>
-                                        <a href="{{ route('doctors.index') }}" class="btn btn-secondary">Cancel</a>
+                                        <a href="{{ route('doctors.index') }}" class="btn" style="background-color: #6895D2; color: #fff;">Cancel</a>
                                     </div>
                                 </div>
+                                <script>
+                                    function confirmUpdate() {
+                                        return confirm('Are you sure you want to update this Doctor?');
+                                    }
+                                </script>
+
+
                         </form>
+
                         </div>
             </div>
         </section>

@@ -17,5 +17,7 @@ class Doctor extends Model
         'doctor_email',
         'sip',
         'description',
+        'id_ihs',
+        'nik',
     ];
 }

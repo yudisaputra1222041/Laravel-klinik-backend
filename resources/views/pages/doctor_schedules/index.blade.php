@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Doctors')
+@section('title', 'Doctor Schedule')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -12,12 +12,12 @@
         <section class="section">
             <div class="section-header">
                 <div class="section-header-button">
-                    <a href="{{ route('doctors.create') }}" class="btn btn-primary">Add New Doctor</a>
+                    <a href="{{ route('doctor_schedules.create') }}" class="btn btn-primary">Add New Doctor Schedule</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Doctors</a></div>
-                    <div class="breadcrumb-item">All Doctors</div>
+                    <div class="breadcrumb-item"><a href="#">Doctors Schedule</a></div>
+                    <div class="breadcrumb-item">All Doctors Schedule</div>
                 </div>
             </div>
             <div class="section-body">
@@ -39,7 +39,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('doctors.index') }}">
+                                    <form method="GET" action="{{ route('doctor_schedules.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search" name="name">
                                             <div class="input-group-append">
@@ -55,47 +55,40 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Photo</th>
                                                 <th>Name</th>
-                                                <th>Category</th>
-                                                <th>Phone</th>
-                                                <th>Email</th>
-                                                <th>Id IHS</th>
-                                                <th>NIK</th>
-                                                <th>SIP</th>
-                                                <th>Description</th>
+                                                <th>Day</th>
+                                                <th>Time</th>
+                                                <th>Status</th>
+                                                <th>Note</th>
                                                 <th>Created At</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($doctors as $doctor)
+                                            @foreach ($doctorSchedules as $schedule)
                                                 <tr>
-                                                    <td>
-                                                        @if ($doctor->photo)
+                                                    {{-- <td>
+                                                        @if ($schedule->photo)
                                                             <img src="{{ asset('storage/doctor/' . $doctor->photo) }}" alt="" width="100px" height="100px" class="img-thumbnail">
 
                                                         @else
                                                             <span class="badge badge-danger">No Image</span>
                                                         @endif
-                                                    </td>
-                                                    <td>{{ $doctor->doctor_name }}</td>
-                                                    <td>{{ $doctor->doctor_category }}</td>
-                                                    <td>{{ $doctor->doctor_phone }}</td>
-                                                    <td>{{ $doctor->doctor_email }}</td>
-                                                    <td>{{ $doctor->id_ihs }}</td>
-                                                    <td>{{ $doctor->nik }}</td>
-                                                    <td>{{ $doctor->sip }}</td>
-                                                    <td>{{ $doctor->description }}</td>
-                                                    <td>{{ $doctor->created_at }}</td>
+                                                    </td> --}}
+                                                    <td>{{ $schedule->doctor->doctor_name }}</td>
+                                                    <td>{{ $schedule->day }}</td>
+                                                    <td>{{ $schedule->time }}</td>
+                                                    <td>{{ $schedule->status }}</td>
+                                                    <td>{{ $schedule->note }}</td>
+                                                    <td>{{ $schedule->created_at }}</td>
                                                     <td>
                                                         <div class="d-flex justify-content-center">
-                                                            <a href='{{ route('doctors.edit', $doctor->id) }}'
+                                                            <a href='{{ route('doctor_schedules.edit', $schedule->id) }}'
                                                                 class="btn btn-sm btn-info btn-icon">
                                                                 <i class="fas fa-edit"></i> Edit
                                                             </a>
 
-                                                            <form action="{{ route('doctors.destroy', $doctor->id) }}"
+                                                            <form action="{{ route('doctor_schedules.destroy', $schedule->id) }}"
                                                                 method="POST" class="ml-2"
                                                                 onsubmit="return confirm('Are You Want to Delete This Doctor ?')">
                                                                 @method('DELETE')
@@ -112,7 +105,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $doctors->withQueryString()->links() }}
+                                    {{ $doctorSchedules->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>

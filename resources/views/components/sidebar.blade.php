@@ -58,6 +58,31 @@
                             href="{{route('doctors.index')}}"><i class="fa-solid fa-user-doctor"></i>Doctors</a>
                     </li>
                 </ul>
+                <ul class="dropdown-menu">
+                    <li class=''>
+                        <a class="nav-link"
+                            href="{{route('doctor_schedules.index')}}"><i class="fa-solid fa-calendar-days"></i>Doctor Schedule</a>
+                    </li>
+                </ul>
             </li>
     </aside>
 </div>
+
+
+
+
+<!-- jQuery (Jika diperlukan) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z8W/AgL6ZQ7gGvhUMfYYYaG6Nk1u12b31Kx+4T" crossorigin="anonymous"></script>
+
+<script>
+    // Menggunakan jQuery untuk menangani klik link
+    $(document).ready(function() {
+        $('#dropdown-toggle').click(function(event) {
+            event.stopPropagation(); // Menghentikan penyebaran event ke parent elemen
+        });
+    });
+</script>
+
+
+
+
